@@ -1,0 +1,19 @@
+[0.847s] Invoking command in '/home/edward/final_ros_ws/src/final_project': CFLAGS=-I/usr/local/cuda-12.6/include PYTHONPATH=/home/edward/final_ros_ws/build/final_project/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/edward/final_ros_ws/install/final_project/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/final_project build --build-base /home/edward/final_ros_ws/build/final_project/build install --record /home/edward/final_ros_ws/build/final_project/install.log --single-version-externally-managed install_data
+[1.219s] running egg_info
+[1.220s] writing ../../build/final_project/final_project.egg-info/PKG-INFO
+[1.221s] writing dependency_links to ../../build/final_project/final_project.egg-info/dependency_links.txt
+[1.221s] writing entry points to ../../build/final_project/final_project.egg-info/entry_points.txt
+[1.221s] writing requirements to ../../build/final_project/final_project.egg-info/requires.txt
+[1.221s] writing top-level names to ../../build/final_project/final_project.egg-info/top_level.txt
+[1.224s] reading manifest file '../../build/final_project/final_project.egg-info/SOURCES.txt'
+[1.224s] adding license file 'LICENSE'
+[1.225s] writing manifest file '../../build/final_project/final_project.egg-info/SOURCES.txt'
+[1.226s] running build
+[1.226s] running build_py
+[1.226s] running install
+[1.226s] running install_lib
+[1.228s] running install_data
+[1.229s] warning: install_data: setup script did not provide a directory for 'share/final_project/launch/ai_gesture.launch.py' -- installing right in '/home/edward/final_ros_ws/install/final_project'
+[1.229s] 
+[1.229s] error: can't copy 'share/final_project/launch/ai_gesture.launch.py': doesn't exist or not a regular file
+[1.261s] Invoked command in '/home/edward/final_ros_ws/src/final_project' returned '1': CFLAGS=-I/usr/local/cuda-12.6/include PYTHONPATH=/home/edward/final_ros_ws/build/final_project/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/edward/final_ros_ws/install/final_project/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/final_project build --build-base /home/edward/final_ros_ws/build/final_project/build install --record /home/edward/final_ros_ws/build/final_project/install.log --single-version-externally-managed install_data
