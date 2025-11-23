@@ -1,7 +1,8 @@
 ros_pack/devel/
-ros_pack/logs/
+ros_pack/log/
 ros_pack/build/
 bin/
+finalenv/
 lib/
 msg_gen/
 srv_gen/

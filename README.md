@@ -44,9 +44,35 @@ I think that we all x64 arch., but if you want to make sure press <kbd>⊞ Win</
     ```
     and seeing something like this 
     ![alt text](image-5.png)
-### Setting up the enviroment:
-Here comes the diffcult part 
-1. Create a folder that you are going to be storing everything in. In my case I called final_ros_ws. 
-[!NOTE]
-This is not the actual ros workspace. I am just too lazy to change it.
+### ~~Setting up the enviroment~~:
+~~Here comes the diffcult part~~ Oh thank God.
+1. ~~Create a folder that you are going to be storing everything in. In my case I called final_ros_ws.~~
+> [!NOTE]
+> This is not the actual ros workspace. I am just too lazy to change it.
 2. Wait I want to try something
+### Setting up the enviroment(much easier version):
+1. Source ros as you usually do 
+    ```bash 
+    source /opt/ros/humble/setup.bash 
+    ```
+2. Clone the repo
+    ```bash
+    git clone https://github.com/TotalNoob1/AI-Final-Project-.git
+    ```
+3. Go into the newly created directory.
+4. Source the install bash.
+    ```bash
+    source AI-Final-Project-/ros_pack/install/setup.bash
+    ```
+5. Run colcon build in ros_pack
+    ```bash
+    cd ros_pack
+    colcon build 
+    ```
+6. You should be able to now run the program.
+    ```bash
+    ros2 launch final_project ai_gesture.launch.py
+    ```
+    I added two extra lines to show that it is working, but you should remove those once you confirm that it is. They are in gesture_control.
+## TODO
+There are still bugs throughout the program and improvements to be made, and I am going to be fixing them as the week goes by. Though I won't say no to any help. We are still have to connect this to the virtual simulator. I can do it, but like I said I would say no to help.
