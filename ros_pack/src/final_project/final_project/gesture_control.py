@@ -82,8 +82,8 @@ class GestureController(Node):
         #do landmark on frame
         results = hands.process(frame_rgb)
         # print(results)
-        cv.imshow("Ros2 Gesture Control View", frame) # This is just here so that you know it is working. 
-        cv.waitKey(20) # remove it these two line 
+        # cv.imshow("Ros2 Gesture Control View", frame) # This is just here so that you know it is working. 
+        # cv.waitKey(20) # remove it these two line 
         #if hand detected
         if results.multi_hand_landmarks:
             for hand_landmarks in results.multi_hand_landmarks:
@@ -103,13 +103,13 @@ class GestureController(Node):
 
                 elif fingers_up == 4 and not tilted_down: #hand upright
                     msg.data = "stand"
-                    self.get_logger().info("sit")
+                    self.get_logger().info("stand")
                 elif fingers_up == 4 and tilted_down: #hand down
                     msg.data = "lay_down"
-                    self.get_logger().info("sit")
+                    self.get_logger().info("lay_down")
                 elif fingers_up == 5: #hand spread
                     msg.data = "stop"
-                    self.get_logger().info("sit")
+                    self.get_logger().info("stop")
                 else: #did not recognize
                     msg.data = ""
                     self.get_logger.info("I ain't got a clue")
@@ -122,11 +122,12 @@ class GestureController(Node):
                 mp_draw.draw_landmarks(frame, hand_landmarks, mp_hands.HAND_CONNECTIONS)
             
             #display webcam
-            # cv.imshow("Ros2 Gesture Control View", frame) 
+            cv.imshow("Ros2 Gesture Control View", frame) 
             #press x to exit
-            if cv.waitKey(1) == ord("x"):
+            test =cv.waitKey(1)
+            if  test == ord("x"):
                 self.cap.release()
-            cv.destroAllWindows()
+            cv.destroyAllWindows()
             rclpy.shutdown()
 
 #ROS NODE ENTRY------------------------------------------------------------------------------------
