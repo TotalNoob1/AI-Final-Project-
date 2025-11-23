@@ -5,7 +5,7 @@ I can not attest that these instructions will work for everyone as I probably fo
 On the windows side you are going to want to use [usbipd-win](https://github.com/dorssel/usbipd-win/releases/tag/v5.3.0). 
 1. Download the .msi version as it is easy then building from source.
 ![usbipd-win](image.png)
-I think that we all x64 arch., but if you want to make sure press <kbd>⊞ Win</kbd> + <kbd>r</kbd>,type `msinfo`, and click okay. You should see this.
+I think that we all use x64 arch., but if you want to make sure press <kbd>⊞ Win</kbd> + <kbd>r</kbd>,type `msinfo`, and click okay. You should see this.
  ![alt text](image-1.png)
  System Type is what you should pay attention to.
 
