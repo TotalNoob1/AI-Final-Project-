@@ -59,10 +59,13 @@ I think that we all x64 arch., but if you want to make sure press <kbd>⊞ Win</
     ```bash
     git clone https://github.com/TotalNoob1/AI-Final-Project-.git
     ```
-3. Go into the newly created directory.
-4. Source the install bash.
+3. Source the install bash.
     ```bash
     source AI-Final-Project-/ros_pack/install/setup.bash
+    ```
+4. Go into the newly created directory.
+    ```bash
+    cd AI-Final-Project-
     ```
 5. Run colcon build in ros_pack
     ```bash
