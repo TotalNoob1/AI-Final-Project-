@@ -78,4 +78,4 @@ I think that we all x64 arch., but if you want to make sure press <kbd>⊞ Win</
     ```
     I added two extra lines to show that it is working, but you should remove those once you confirm that it is. They are in gesture_control.
 ## TODO
-There are still bugs throughout the program and improvements to be made, and I am going to be fixing them as the week goes by. Though I won't say no to any help. We are still have to connect this to the virtual simulator. I can do it, but like I said I would say no to help.
+There are still bugs throughout the program and improvements to be made, and I am going to be fixing them as the week goes by. Though I won't say no to any help. We are still have to connect this to the virtual simulator. I can do it, but like I said I would not say no to help.
