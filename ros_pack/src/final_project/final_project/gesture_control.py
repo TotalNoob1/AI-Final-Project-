@@ -82,6 +82,8 @@ class GestureController(Node):
         #do landmark on frame
         results = hands.process(frame_rgb)
         # print(results)
+        cv.imshow("Ros2 Gesture Control View", frame) # This is just here so that you know it is working. 
+        cv.waitKey(20) # remove it these two line 
         #if hand detected
         if results.multi_hand_landmarks:
             for hand_landmarks in results.multi_hand_landmarks:
@@ -120,7 +122,7 @@ class GestureController(Node):
                 mp_draw.draw_landmarks(frame, hand_landmarks, mp_hands.HAND_CONNECTIONS)
             
             #display webcam
-            cv.imshow("Ros2 Gesture Control View", frame)
+            # cv.imshow("Ros2 Gesture Control View", frame) 
             #press x to exit
             if cv.waitKey(1) == ord("x"):
                 self.cap.release()
