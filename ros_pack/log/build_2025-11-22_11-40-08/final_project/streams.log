@@ -1,0 +1,23 @@
+[0.702s] Invoking command in '/home/edward/final_ros_ws/ros_pack/src/final_project': CFLAGS=-I/usr/local/cuda-12.6/include PYTHONPATH=/home/edward/final_ros_ws/ros_pack/build/final_project/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/edward/final_ros_ws/ros_pack/install/final_project/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/final_project build --build-base /home/edward/final_ros_ws/ros_pack/build/final_project/build install --record /home/edward/final_ros_ws/ros_pack/build/final_project/install.log --single-version-externally-managed install_data
+[0.964s] running egg_info
+[0.965s] writing ../../build/final_project/final_project.egg-info/PKG-INFO
+[0.966s] writing dependency_links to ../../build/final_project/final_project.egg-info/dependency_links.txt
+[0.966s] writing entry points to ../../build/final_project/final_project.egg-info/entry_points.txt
+[0.966s] writing requirements to ../../build/final_project/final_project.egg-info/requires.txt
+[0.966s] writing top-level names to ../../build/final_project/final_project.egg-info/top_level.txt
+[0.968s] reading manifest file '../../build/final_project/final_project.egg-info/SOURCES.txt'
+[0.968s] adding license file 'LICENSE'
+[0.969s] writing manifest file '../../build/final_project/final_project.egg-info/SOURCES.txt'
+[0.969s] running build
+[0.969s] running build_py
+[0.969s] running install
+[0.969s] running install_lib
+[0.971s] running install_data
+[0.971s] running install_egg_info
+[0.973s] removing '/home/edward/final_ros_ws/ros_pack/install/final_project/lib/python3.10/site-packages/final_project-0.0.0-py3.10.egg-info' (and everything under it)
+[0.973s] Copying ../../build/final_project/final_project.egg-info to /home/edward/final_ros_ws/ros_pack/install/final_project/lib/python3.10/site-packages/final_project-0.0.0-py3.10.egg-info
+[0.974s] running install_scripts
+[0.994s] Installing a1_subscriber script to /home/edward/final_ros_ws/ros_pack/install/final_project/lib/final_project
+[0.994s] Installing gesture_control script to /home/edward/final_ros_ws/ros_pack/install/final_project/lib/final_project
+[0.994s] writing list of installed files to '/home/edward/final_ros_ws/ros_pack/build/final_project/install.log'
+[1.013s] Invoked command in '/home/edward/final_ros_ws/ros_pack/src/final_project' returned '0': CFLAGS=-I/usr/local/cuda-12.6/include PYTHONPATH=/home/edward/final_ros_ws/ros_pack/build/final_project/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/edward/final_ros_ws/ros_pack/install/final_project/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/final_project build --build-base /home/edward/final_ros_ws/ros_pack/build/final_project/build install --record /home/edward/final_ros_ws/ros_pack/build/final_project/install.log --single-version-externally-managed install_data

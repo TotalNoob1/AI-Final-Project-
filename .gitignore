@@ -1,6 +1,6 @@
-devel/
-logs/
-build/
+ros_pack/devel/
+ros_pack/logs/
+ros_pack/build/
 bin/
 lib/
 msg_gen/

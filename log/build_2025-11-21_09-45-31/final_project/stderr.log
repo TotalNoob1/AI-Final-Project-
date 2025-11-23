@@ -1,3 +1,0 @@
-warning: install_data: setup script did not provide a directory for 'share/final_project/launch/ai_gesture.launch.py' -- installing right in '/home/edward/final_ros_ws/install/final_project'
-
-error: can't copy 'share/final_project/launch/ai_gesture.launch.py': doesn't exist or not a regular file
