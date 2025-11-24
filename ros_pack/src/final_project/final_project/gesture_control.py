@@ -6,6 +6,7 @@ import mediapipe as mp
 import rclpy
 from rclpy.node import Node
 from std_msgs.msg import String
+from geometry_msgs.msg import Twist
 
 # START MEDIAPIPE HAND TRACKING--------------------------------------------------------------------
 mp_hands = mp.solutions.hands # accesses mediapipe hands model package
@@ -103,17 +104,20 @@ class GestureController(Node):
 
                 #GESTURE RULES=====================================================================
                 if fingers_up == 0: #fist
-                    msg.data = "sit" 
-                    self.get_logger().info("sit")
-                elif fingers_up == 1: #hand upright
-                    msg.data = "stand"
-                    self.get_logger().info("stand")
-                elif fingers_up == 2: #hand down
-                    msg.data = "lay_down"
-                    self.get_logger().info("lay_down")
-                elif fingers_up == 3: #hand spread
-                    msg.data = "stop"
+                    msg.data = "stop" 
                     self.get_logger().info("stop")
+                elif fingers_up == 1: #hand upright
+                    msg.data = "come"
+                    self.get_logger().info("come")
+                elif fingers_up == 2: #hand down
+                    msg.data = "get_back"
+                    self.get_logger().info("get_back")
+                elif fingers_up == 3: #hand spread
+                    msg.data = "spin_left"
+                    self.get_logger().info("spin_left")
+                elif fingers_up == 4: #hand spread
+                    msg.data = "spin_right"
+                    self.get_logger().info("spin_right")
                 else: #did not recognize
                     msg.data = ""
                     self.get_logger().info("I ain't got a clue")

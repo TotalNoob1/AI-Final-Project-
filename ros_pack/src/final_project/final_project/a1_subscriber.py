@@ -2,25 +2,10 @@
 
 #IMPORT LIBRARIES----------------------------------------------------------------------------------
 import rclpy
+from geometry_msgs.msg import Twist
 from rclpy.node import Node
 from std_msgs.msg import String #recieves gesture commands
 from trajectory_msgs.msg import JointTrajectory, JointTrajectoryPoint #commands joints
-
-#JOINT NAMES---------------------------------------------------------------------------------------
-JOINT_NAMES = [
-    "FRHJ", "FRTJ", "FRCJ", #front right hip, thigh, and calf joint
-    "FLHJ", "FLTJ", "FLCJ", #front left hip, thigh, and calf joint
-    "RRHJ", "RRTJ", "RRCJ", #rear right hip, thigh, and calf joint
-    "RLHP", "RLTJ", "RLCJ" #rear left hip, thigh, and calf joint
-]
-
-#POSES---------------------------------------------------------------------------------------------
-#may need to adjust depending on how it looks under simulation
-POSES = {
-    "stand": [0.0, 0.7, -1.4, 0.0, 0.7, -1.4, 0.0, 0.7, -1.4, 0.0, 0.7, -1.4], 
-    "sit": [0.0, 0.4, -0.6, 0.0, 0.4, -0.6, 0.0, 0.6, -1.0, 0.0, 0.6, -1.0],
-    "lay_down": [0.0, 0.1, -0.1, 0.0, 0.1, -0.1, 0.0, 0.0, 0.1, -0.1, 0.0, 0.1, -0.1],
-}
 
 #NODE CLASS----------------------------------------------------------------------------------------
 class A1_Subscriber(Node):
@@ -39,8 +24,8 @@ class A1_Subscriber(Node):
         #PUBLISHER_________________________________________________________________________________
         #publisher sends msgs to joints
         self.joint_pub = self.create_publisher(
-            JointTrajectory,
-            'test',
+            Twist,
+            '/cmd_vel',
             10
         )
 
@@ -52,28 +37,50 @@ class A1_Subscriber(Node):
         #make string lowercase
         command = msg.data.lower()
 
-        #stop command to stop in position
-        if command == "stop":
-            self.get_logger().info("STOP command received, holding current position")
-            return #exit w/o pub
-        
-        #check for known commands
-        if command not in POSES:
-            self.get_logger().warn(f"Unknown command: {command}")
-            return #ignore
-        
-        #JOINT TRAJECTORY MSG______________________________________________________________________
-        traj = JointTrajectory()
-        traj.joint_names = JOINT_NAMES
+        #create velocity message
+        twist = Twist()
 
-        #create single point
-        point = JointTrajectoryPoint()
-        point.positions = POSES[command] #assign pos for pose
-        point. time_from_start.sec = 1 #move over 1 sec
-        traj.points.append(point) #add point to traj
+        #command mappings
+        if command == "stop":
+            # walk foward
+            twist.linear.x = 0.0
+            twist.linear.y = 0.0
+            twist.linear.z = 0.0
+            twist.angular.x = 0.0
+            twist.angular.x = 0.0
+            twist.angular.x = 0.0
+            self.get_logger().info("STOP - Fred stopped")
+
+        elif command == "come":
+            #turn left in place
+            twist.linear.x = 0.3
+            twist.angular.z = 0.0
+            self.get_logger().info("COME - Fred is coming back")
+
+        elif command == "get_back":
+            #walk backwards
+            twist.linear.x = -0.3
+            twist.angular.z = 0.0
+            self.get_logger().info("GET BACK - Fred is backing up")
+
+        elif command == "spin_left":
+            #turn left in place
+            twist.linear.x = 0.0
+            twist.angular.z = 0.5
+            self.get_logger().info("SPIN LEFT - Fred is spinning left")
+
+        elif command == "spin_right":
+            #turn right in place
+            twist.linear.x = 0.0
+            twist.angular.z = -0.5
+            self.get_logger().info("SPIN RIGHT - Fred is spinning right")
+
+        else:
+            self.get_logger().warn(f"Unknown command: {command}")
+            return
 
         #PUBLISH___________________________________________________________________________________
-        self.joint_pub.publish(traj)
+        self.joint_pub.publish(twist)
         self.get_logger().info(f"Command executed: {command}")
 
 #MAIN FUNC-----------------------------------------------------------------------------------------
