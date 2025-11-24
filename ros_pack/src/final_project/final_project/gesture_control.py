@@ -46,14 +46,15 @@ class GestureController(Node):
         #compare y of fingertip vs wrist
         
         ##mediapipe fingertip indexes for 4 fings no thumb
-        tip_id = [8, 12, 16,20] #pointer, middle, ring, and pinky
+        tip_id = [8, 12, 16, 20] #pointer, middle, ring, and pinky
+        dip_id = [7, 11, 15, 19]
         wrist_y = hand_landmarks.landmark[0].y #wrist index = 0
 
         fingers_up = 0
-        for tip in tip_id:
-            if hand_landmarks.landmark[tip].y < wrist_y:
+        for x,tip in enumerate(tip_id):
+            if hand_landmarks.landmark[tip].y < hand_landmarks.landmark[dip_id[x]].y:
                 fingers_up += 1 #if finger is higher it is extended
-
+        self.get_logger().info(str(fingers_up))
         return fingers_up
     
     #FUNC FOR PALM TILT____________________________________________________________________________
@@ -63,7 +64,11 @@ class GestureController(Node):
 
         wrist_y = hand_landmarks.landmark[0].y
         pointer_tip_y = hand_landmarks.landmark[8].y
-
+        self.get_logger().info("wrist_y")
+        intStr = wrist_y
+        self.get_logger().info(str(wrist_y))
+        self.get_logger().info("pointer_tip_y")
+        self.get_logger().info(str(pointer_tip_y))
         return pointer_tip_y > wrist_y #true for palm down
     
     #LOOP FOR WEBCAM READ, HAND DETECTION, AND PUBLISHING ROS______________________________________
@@ -103,7 +108,7 @@ class GestureController(Node):
                 elif fingers_up == 4 and not tilted_down: #hand upright
                     msg.data = "stand"
                     self.get_logger().info("stand")
-                elif fingers_up == 4 and tilted_down: #hand down
+                elif fingers_up == 1 and tilted_down: #hand down
                     msg.data = "lay_down"
                     self.get_logger().info("lay_down")
                 elif fingers_up == 5: #hand spread
