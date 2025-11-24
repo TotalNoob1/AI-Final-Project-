@@ -100,7 +100,6 @@ class GestureController(Node):
                 if fingers_up == 0: #fist
                     msg.data = "sit" 
                     self.get_logger().info("sit")
-
                 elif fingers_up == 4 and not tilted_down: #hand upright
                     msg.data = "stand"
                     self.get_logger().info("stand")
@@ -112,7 +111,7 @@ class GestureController(Node):
                     self.get_logger().info("stop")
                 else: #did not recognize
                     msg.data = ""
-                    self.get_logger.info("I ain't got a clue")
+                    self.get_logger().info("I ain't got a clue")
                 #publish command
                 if msg.data != "":
                     self.publisher.publish(msg)
@@ -124,11 +123,11 @@ class GestureController(Node):
             #display webcam
             cv.imshow("Ros2 Gesture Control View", frame) 
             #press x to exit
-            test =cv.waitKey(1)
-            if  test == ord("x"):
-                self.cap.release()
-            cv.destroyAllWindows()
-            rclpy.shutdown()
+            test = cv.waitKey(1)
+            # if  test == ord("x"):
+            #     self.cap.release()
+            # cv.destroyAllWindows()
+            # rclpy.shutdown()
 
 #ROS NODE ENTRY------------------------------------------------------------------------------------
 def main():
