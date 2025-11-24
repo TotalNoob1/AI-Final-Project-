@@ -19,7 +19,7 @@ JOINT_NAMES = [
 POSES = {
     "stand": [0.0, 0.7, -1.4, 0.0, 0.7, -1.4, 0.0, 0.7, -1.4, 0.0, 0.7, -1.4], 
     "sit": [0.0, 0.4, -0.6, 0.0, 0.4, -0.6, 0.0, 0.6, -1.0, 0.0, 0.6, -1.0],
-    "lay_down": [0.0, 0.1, -0.1, 0.0, 0.1, -0.1, 0.0, 0.1, -0.1, 0.0, 0.1, -0.1],
+    "lay_down": [0.0, 0.1, -0.1, 0.0, 0.1, -0.1, 0.0, 0.0, 0.1, -0.1, 0.0, 0.1, -0.1],
 }
 
 #NODE CLASS----------------------------------------------------------------------------------------
@@ -69,7 +69,7 @@ class A1_Subscriber(Node):
         #create single point
         point = JointTrajectoryPoint()
         point.positions = POSES[command] #assign pos for pose
-        point.time_from_start.sec = 1 #move over 1 sec
+        point. time_from_start.sec = 1 #move over 1 sec
         traj.points.append(point) #add point to traj
 
         #PUBLISH___________________________________________________________________________________

@@ -38,7 +38,7 @@ class GestureController(Node):
         #timer so processing runs continously about 30 frames ps
         self.timer = self.create_timer(0.3, self.process_frame)
 
-        self.get_logger().info("Gesture Controller Node Active")
+        self.get_logger().info("Getsure Controller Node Active")
 
     # FUNC FOR EXTENDED FINGERS ___________________________________________________________________
     def count_fings(self, hand_landmarks):
@@ -46,14 +46,15 @@ class GestureController(Node):
         #compare y of fingertip vs wrist
         
         ##mediapipe fingertip indexes for 4 fings no thumb
-        tip_id = [8, 12, 16,20] #pointer, middle, ring, and pinky
-        wrist_y = hand_landmarks.landmark[0].y #wrist index = 0
+        tip_id = [8, 12, 16, 20] #pointer, middle, ring, and pinky
+        dip_id = [7, 11, 15, 19]
+        
 
         fingers_up = 0
-        for tip in tip_id:
-            if hand_landmarks.landmark[tip].y < wrist_y:
+        for x,tip in enumerate(tip_id):
+            if hand_landmarks.landmark[tip].y < hand_landmarks.landmark[dip_id[x]].y:
                 fingers_up += 1 #if finger is higher it is extended
-
+        # self.get_logger().info(str(fingers_up))
         return fingers_up
     
     #FUNC FOR PALM TILT____________________________________________________________________________
@@ -63,7 +64,11 @@ class GestureController(Node):
 
         wrist_y = hand_landmarks.landmark[0].y
         pointer_tip_y = hand_landmarks.landmark[8].y
-
+        # self.get_logger().info("wrist_y")
+        intStr = wrist_y
+        # self.get_logger().info(str(wrist_y))
+        # self.get_logger().info("pointer_tip_y")
+        # self.get_logger().info(str(pointer_tip_y))
         return pointer_tip_y > wrist_y #true for palm down
     
     #LOOP FOR WEBCAM READ, HAND DETECTION, AND PUBLISHING ROS______________________________________
@@ -100,14 +105,13 @@ class GestureController(Node):
                 if fingers_up == 0: #fist
                     msg.data = "sit" 
                     self.get_logger().info("sit")
-
-                elif fingers_up == 4 and not tilted_down: #hand upright
+                elif fingers_up == 1: #hand upright
                     msg.data = "stand"
                     self.get_logger().info("stand")
-                elif fingers_up == 4 and tilted_down: #hand down
+                elif fingers_up == 2: #hand down
                     msg.data = "lay_down"
                     self.get_logger().info("lay_down")
-                elif fingers_up == 5: #hand spread
+                elif fingers_up == 3: #hand spread
                     msg.data = "stop"
                     self.get_logger().info("stop")
                 else: #did not recognize
@@ -121,14 +125,14 @@ class GestureController(Node):
                 #draw hand for debug
                 mp_draw.draw_landmarks(frame, hand_landmarks, mp_hands.HAND_CONNECTIONS)
             
-                #display webcam
-                cv.imshow("Ros2 Gesture Control View", frame) 
-                #press x to exit
-                test =cv.waitKey(1)
-                if  test == ord("x"):
-                    self.cap.release()
-                cv.destroyAllWindows()
-                rclpy.shutdown()
+            #display webcam
+            cv.imshow("Ros2 Gesture Control View", frame) 
+            #press x to exit
+            test = cv.waitKey(1)
+            # if  test == ord("x"):
+            #     self.cap.release()
+            # cv.destroyAllWindows()
+            # rclpy.shutdown()
 
 #ROS NODE ENTRY------------------------------------------------------------------------------------
 def main():
